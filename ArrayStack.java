@@ -7,7 +7,7 @@ public class ArrayStack<T> implements StackInterface<T> {
 	private int topIndex;
 	private boolean initialized = false;
 	private static final int DEFAULT_CAPACITY = 50;
-	private static final int MAX_CAPACITY = 10000;
+	private static final int MAX_CAPACITY = 10;
 	private void ensureCapacity(){
 		if(topIndex == stack.length -1){
 			int newLength = 2*stack.length;

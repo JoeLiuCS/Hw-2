@@ -5,7 +5,7 @@ public class ArrayQueue<T> implements QueueInterface<T> {
 	private int backIndex;
     private boolean initialized = false;
     private static final int DEAFAULT_CAPACITY = 50;
-    private static final int MAX_CAPACITY = 10000;
+    private static final int MAX_CAPACITY = 10;
     private void ensureCapacity(){
 		if(frontIndex == ((backIndex +2)%queue.length)){
 			T[] oldQueue = queue;

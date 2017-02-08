@@ -2,6 +2,7 @@ public class TwoPartCircularLinkedQueue<T> implements QueueInterface<T> {
 
 	private Node<T> queueNode;
 	private Node<T> freeNode;
+	private int size; //size <= 10
 	private boolean isChainFull(){
 		return queueNode == freeNode.getNextNode();
 	}
@@ -10,6 +11,7 @@ public class TwoPartCircularLinkedQueue<T> implements QueueInterface<T> {
 		freeNode = new Node<T>(null,null);
 		freeNode.setNextNode(freeNode);
 		queueNode = freeNode;
+		size = 0;
 	}
 	
 	@SuppressWarnings("hiding")
@@ -45,9 +47,10 @@ public class TwoPartCircularLinkedQueue<T> implements QueueInterface<T> {
 	@Override
 	public void enqueue(T newEntry) {
 		freeNode.setData(newEntry);
-		if(isChainFull()){
+		if(isChainFull()&& size <11){
 			Node<T> newNode = new Node<T>(null,freeNode.getNextNode());
 			freeNode.setNextNode(newNode);
+			size++;
 		}
 		freeNode = freeNode.getNextNode();
 	}
@@ -58,6 +61,7 @@ public class TwoPartCircularLinkedQueue<T> implements QueueInterface<T> {
 		assert !isEmpty();
 		queueNode.setData(null);
 		queueNode = queueNode.getNextNode();
+		size--;
 		return front;
 	}
 
